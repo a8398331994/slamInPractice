@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build all project",
             "type": "shell",
             "command": "ninja",
             "group": "build",
@@ -26,7 +26,8 @@
                 "..",
                 "-DCMAKE_CXX_COMPILER=clang++",
                 "-DCMAKE_C_COMPILER=clang",
-                "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+                "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+                "-DSOPHUS_USE_BASIC_LOGGING=ON"
             ],
             "problemMatcher": []
         },

@@ -7,5 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
 include(cmake/eigen.cmake)
+include(cmake/sophus.cmake)
 
 add_subdirectory(project)
