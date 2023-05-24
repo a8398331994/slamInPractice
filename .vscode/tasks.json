@@ -6,6 +6,7 @@
         {
             "label": "Build all project",
             "type": "shell",
+            "dependsOn": "Configuration",
             "command": "ninja",
             "group": "build",
             "options": {
@@ -27,7 +28,8 @@
                 "-DCMAKE_CXX_COMPILER=clang++",
                 "-DCMAKE_C_COMPILER=clang",
                 "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
-                "-DSOPHUS_USE_BASIC_LOGGING=ON"
+                "-DSOPHUS_USE_BASIC_LOGGING=ON",
+                "-Dbuild_all_project=ON"
             ],
             "problemMatcher": []
         },
