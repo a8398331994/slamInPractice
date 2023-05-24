@@ -1,3 +1,4 @@
+#include <ctime>
 #include <iostream>
 
 #include "Eigen/Core"
@@ -39,7 +40,7 @@ int main() {
   // Can't not operate two different data type.
   // Eigen::Matrix<double, 2, 1> result_wrong = matrix23 * v3d;
 
-  // It can use cast() operation to convert consisted data type.
+  // It can use cast() operation to convert consistent data type.
   Eigen::Matrix<double, 2, 1> result = matrix23.cast<double>() * v3d;
   cout << "matrix23 * v3d:" << endl << result << endl;
 
@@ -51,7 +52,33 @@ int main() {
   cout << "10 * matrix33:" << endl << 10 * matrix33 << endl;
   cout << "matrix33 inverse:" << endl << matrix33.inverse() << endl;
   cout << "matrix33 determinant:" << endl << matrix33.determinant() << endl;
-    Eigen::Matrix3d rotationMatrix = Eigen::Matrix3d::Identity();
 
-    std::cout << "rotation matrix:" << rotationMatrix.matrix() << std::endl;
+  Eigen::SelfAdjointEigenSolver<Eigen::Matrix3d> eigenSolver(
+      matrix33.transpose() * matrix33);
+  cout << "matrix33 eigen values:" << endl
+       << eigenSolver.eigenvalues() << std::endl;
+  cout << "matrix33 eigen vectors:" << endl
+       << eigenSolver.eigenvectors() << std::endl;
+
+  cout << "Compare directly inverse solution and Qr composition" << endl;
+  constexpr int MATRIX_SIZE = 50;
+
+  Eigen::Matrix<double, MATRIX_SIZE, MATRIX_SIZE> matrixNN;
+  matrixNN = Eigen::MatrixXd::Random(MATRIX_SIZE, MATRIX_SIZE);
+  Eigen::Matrix<double, MATRIX_SIZE, 1> vNd;
+  vNd = Eigen::MatrixXd::Random(MATRIX_SIZE, 1);
+
+  clock_t timeStart = clock();
+  Eigen::Matrix<double, MATRIX_SIZE, 1> x = matrixNN.inverse() * vNd;
+  cout << "Time use in normal inverse is:"
+       << 1000 * (clock() - timeStart) / static_cast<double>(CLOCKS_PER_SEC)
+       << " ms" << endl;
+
+  timeStart = clock();
+  x = matrixNN.colPivHouseholderQr().solve(vNd);
+  cout << "Time use in Qr composition is:"
+       << 1000 * (clock() - timeStart) / static_cast<double>(CLOCKS_PER_SEC)
+       << " ms" << endl;
+
+  return 0;
 }
