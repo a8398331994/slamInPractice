@@ -4,9 +4,8 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build all project",
+            "label": "Build project",
             "type": "shell",
-            "dependsOn": "Configuration",
             "command": "ninja",
             "group": "build",
             "options": {
