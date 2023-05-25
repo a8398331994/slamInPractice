@@ -15,6 +15,6 @@ Here we also recommend to use [vscode](https://code.visualstudio.com/) IDE to ed
 
 ## Build
 
-If you open this project with vscode IDE, execute `Configuration` task to configure this project. Then, execute `Build all project` task to build all execution in this project. (See [task.json](.vscode/tasks.json) to get more detail)
+If you open this project with vscode IDE, execute `Configuration` task to configure this project. Then, execute `Build project` task to build all execution in this project. (See [task.json](.vscode/tasks.json) to get more detail)
 
 
