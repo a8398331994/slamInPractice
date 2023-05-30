@@ -1,0 +1,4 @@
+[submodule "thirdparty/opencv_prebuilt"]
+	path = thirdparty/opencv_prebuilt
+	url = https://github.com/huihut/OpenCV-MinGW-Build.git
+	branch = OpenCV-4.1.0-x64
