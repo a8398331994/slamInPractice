@@ -1,2 +1,3 @@
 add_subdirectory(1_matrix_operation)
 add_subdirectory(2_geometry)
+add_subdirectory(3_lie_algebra)
