@@ -33,6 +33,23 @@
             "problemMatcher": []
         },
         {
+            "label": "Install thirdparty",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "command": "git",
+            "args": [
+                "submodule",
+                "update",
+                "--init",
+                "--depth",
+                "1",
+                "thirdparty/opencv_prebuilt",
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "makeBuildFolder",
             "type": "shell",
             "hide": true,
